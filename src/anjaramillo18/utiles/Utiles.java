@@ -1,4 +1,3 @@
-
 package anjaramillo18.utiles;
 
 import java.util.Random;
@@ -9,32 +8,18 @@ import java.util.Scanner;
  */
 public class Utiles {
 
-    public static void ejercicio_1() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el número para generar la tabla de multiplicar:");
-        int numero = sc.nextInt();
-
-        System.out.println("¿Hasta qué número desea multiplicar?");
-        int limite = sc.nextInt();
-
-        System.out.println("\nTabla de multiplicar del " + numero + ":");
-        System.out.println("------------------------");
+    public String ejercicio_1(int numero, int limite) {
+        String tablamultiplicar = "";
 
         for (int i = 1; i <= limite; i++) {
             int resultado = numero * i;
             System.out.printf("%d x %d = %d%n", numero, i, resultado);
         }
-
-        sc.close();
+        return tablamultiplicar;
 
     }
 
-    public static void ejercicio_2() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("¿Cuántos números primos desea calcular?");
-        int n = sc.nextInt();
+    public void ejercicio2(int n) {
 
         System.out.println("Primeros " + n + " números primos");
         System.out.println("\t═══════════════════════════════════");
@@ -61,10 +46,9 @@ public class Utiles {
 
         System.out.println("\t═══════════════════════════════════");
 
-        sc.close();
     }
 
-    public static boolean esPrimo(int numero) {
+    public boolean esPrimo(int numero) {
         if (numero <= 1) {
             return false;
         }
@@ -77,8 +61,7 @@ public class Utiles {
         return true;
     }
 
-    public static void ejercicio_3() {
-        System.out.println("Numeros de 3 digitos que cuya  suma sea 10 ");
+    public void ejercicio_3() {
         int numero1, numero2, numero3;
         for (int num = 100; num <= 1000; num++) {
 
@@ -95,15 +78,7 @@ public class Utiles {
         }
     }
 
-
-    public static void ejercicio_4() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese el primer número:");
-        int numero1 = sc.nextInt();
-
-        System.out.println("Ingrese el segundo número:");
-        int numero2 = sc.nextInt();
+    public void ejercicio_4(int numero1, int numero2) {
 
         // Calculamos el MCD usando el algoritmo de Euclides
         int mcd = 1;
@@ -119,22 +94,20 @@ public class Utiles {
 
         System.out.printf("El mínimo común múltiplo de %d y %d es: %d%n", numero1, numero2, mcm);
 
-        sc.close();
     }
 
-    public static void ejercicio_5() {
+    public void ejercicio_5(int cantidad) {
+
         Scanner sc = new Scanner(System.in);
 
         int[] numeros = new int[20];
-        int cantidad = 0;
+
         boolean repetido = false;
 
-        System.out.println("Ingrese números (se detendrá cuando ingrese uno repetido)");
-
+        //System.out.println("Ingrese números (se detendrá cuando ingrese uno repetido)");
         while (!repetido) {
 
             System.out.println("Número: ");
-
             int num = sc.nextInt();
 
             int i = 0;
@@ -164,42 +137,25 @@ public class Utiles {
         }
         System.out.printf("\nTotal de números: %d\n", cantidad);
 
-        sc.close();
-
     }
 
-    public static void ejercicio_6() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese un número: ");
-        int numero = sc.nextInt();
-
-        // Guardamos el número original para mostrarlo al final
-        int numeroOriginal = numero;
+    public void ejercicio_6(int numero_original) {
 
         // Para manejar números negativos
-        if (numero < 0) {
-            numero = -numero;
+        if (numero_original < 0) {
+            numero_original = -numero_original;
         }
-
         // Contamos los dígitos
         int digitos = 0;
-        while (numero > 0) {
-            numero = numero / 10;  // Dividimos entre 10 en cada iteración
+        while (numero_original > 0) {
+            numero_original = numero_original / 10;  // Dividimos entre 10 en cada iteración
             digitos++;
         }
-
-        System.out.printf("El número %d tiene %d dígitos\n", numeroOriginal, digitos);
-
-        sc.close();
-
+        System.out.println("el numero de digitos es: " + digitos);
     }
 
-    public static void ejercicio_7() {
+    public void ejercicio_7(int intentos, String clave) {
         Scanner sc = new Scanner(System.in);
-
-        String clave = "123";
-        int intentos = 3;
 
         while (intentos > 0) {
             System.out.println("Ingrese la clave: ");
@@ -214,15 +170,9 @@ public class Utiles {
             }
         }
 
-        sc.close();
-
     }
 
-    public static void ejercicio_8() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese un número: ");
-        int numero = sc.nextInt();
+    public void ejercicio_8(int numero) {
 
         int numeroOriginal = numero;
         int numeroRevertido = 0;
@@ -235,26 +185,17 @@ public class Utiles {
 
         System.out.printf("Número original: %d\n", numeroOriginal);
         System.out.printf("Número revertido: %d\n", numeroRevertido);
-
-        sc.close();
-
     }
 
-    public static void ejercicio_9() {
-        Scanner sc = new Scanner(System.in);
+    public void ejercicio_9() {
 
         String vocalesEncontradas = "";
-        char letra;
+        char letra = 0;
         boolean vocalRepetida = false;
-
-        System.out.println("Ingrese letras (una a la vez).");
-        System.out.println("El programa terminará cuando se repita una vocal.");
 
         do {
             System.out.println("Ingrese una letra: ");
-
-            // Leemos la letra y la convertimos a minúscula para evitar problemas de mayúsculas
-            letra = sc.next().toLowerCase().charAt(0);
+             letra = new Scanner(System.in).next().toLowerCase().charAt(0);
 
             // Verificamos si es vocal
             if (letra == 'a' || letra == 'e' || letra == 'i' || letra == 'o' || letra == 'u') {
@@ -272,37 +213,30 @@ public class Utiles {
 
         System.out.println("\nVocales encontradas: " + vocalesEncontradas);
 
-        sc.close();
-
     }
 
-    public static void ejercicio_10() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("Ingrese un número: ");
-        int numero = sc.nextInt();
+    public int ejercicio_10(int numeros) {
 
         do {
             int suma = 0;
 
             // Sumar los dígitos
-            while (numero > 0) {
-                suma += numero % 10;
-                numero = numero / 10;
+            while (numeros > 0) {
+                suma += numeros % 10;
+                numeros = numeros / 10;
             }
 
             System.out.printf("Suma: %d\n", suma);
-            numero = suma;
+            numeros = suma;
 
-        } while (numero > 9);
+        } while (numeros > 9);
 
-        sc.close();
+        return numeros = numeros;
 
     }
 
-    public static void ejercicio_11() {
+    public int ejercicio_11() {
         Scanner sc = new Scanner(System.in);
-
         int mayoresEdad = 0;
         char continuar;
 
@@ -319,18 +253,13 @@ public class Utiles {
 
         } while (continuar == 's' || continuar == 'S');
 
-        System.out.printf("\nCantidad de personas mayores de edad: %d\n", mayoresEdad);
-
-        sc.close();
+        return mayoresEdad;
 
     }
 
-    public static void ejercicio_12() {
-        Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
+    public void ejercicio_12(int totalMinimo) {
 
-        System.out.println("Ingrese el total mínimo a alcanzar: ");
-        int totalMinimo = sc.nextInt();
+        Random rand = new Random();
 
         int suma = 0;
         int contador = 0;
@@ -348,11 +277,9 @@ public class Utiles {
         System.out.printf("Suma final: %d\n", suma);
         System.out.printf("Cantidad de números generados: %d\n", contador);
 
-        sc.close();
-
     }
 
-    public static void ejercicio_13() {
+    public void ejercicio_13() {
         Scanner sc = new Scanner(System.in);
 
         do {
@@ -393,11 +320,10 @@ public class Utiles {
         } while (true);
 
         System.out.println("\n¡Programa terminado!");
-        sc.close();
 
     }
 
-    public static void ejercicio_14() {
+    public void ejercicio_14() {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
 
@@ -485,9 +411,6 @@ public class Utiles {
             System.out.println("¡El juego terminó en empate!");
         }
 
-        sc.close();
-
-
     }
 
     private static String convertirJugada(int jugada) {
@@ -509,8 +432,7 @@ public class Utiles {
         return resultado;
     }
 
-
-    public static void ejercicio_15() {
+    public void ejercicio_15() {
         Scanner sc = new Scanner(System.in);
 
         do {
@@ -531,8 +453,7 @@ public class Utiles {
                     break;
 
                 // Consonantes
-                case 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm',
-                     'n', 'ñ', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z':
+                case 'b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'ñ', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z':
                     System.out.println("una CONSONANTE");
                     break;
 
@@ -547,9 +468,7 @@ public class Utiles {
                     break;
 
                 // Símbolos especiales comunes
-                case '.', ',', ';', ':', '!', '¡', '?', '¿', '"', '\'',
-                     '+', '-', '*', '/', '=', '@', '#', '$', '%', '&',
-                     '(', ')', '[', ']', '{', '}':
+                case '.', ',', ';', ':', '!', '¡', '?', '¿', '"', '\'', '+', '-', '*', '/', '=', '@', '#', '$', '%', '&', '(', ')', '[', ']', '{', '}':
                     System.out.println("un SÍMBOLO ESPECIAL");
                     break;
 
@@ -564,17 +483,12 @@ public class Utiles {
 
         } while (true);
 
-        sc.close();
-
     }
 
-    public static void ejercicio_16() {
+    public String ejercicio_16(int mes) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("=== DÍAS DEL MES ===");
-        System.out.print("Ingrese el número del mes (1-12): ");
-        int mes = sc.nextInt();
-
+        String resultado;
         String nombreMes;
         switch (mes) {
             case 1:
@@ -643,10 +557,179 @@ public class Utiles {
                 break;
         }
 
-        System.out.printf("%s tiene %s", nombreMes, dias);
+        resultado = String.format("%s tiene %s", nombreMes, dias);
 
-        sc.close();
-
+        return resultado;
 
     }
+
+    public void ejercicio_17(double cantidad, int meses, String tipo) {
+        // Primero definimos el interés según el tipo de préstamo
+        double interes;
+
+        if (tipo.equalsIgnoreCase("personal")) {
+            interes = 12; // 12%
+        } else if (tipo.equalsIgnoreCase("hipotecario")) {
+            interes = 6;  // 6%
+        } else if (tipo.equalsIgnoreCase("cofidis")) {
+            interes = 18; // 18%
+        } else {
+            System.out.println("Tipo de préstamo no válido");
+            return;
+        }
+
+        // Hacemos los cálculos básicos
+        double interesAnual = interes / 100;
+        double cuotaMensual = (cantidad + (cantidad * interesAnual)) / meses;
+        double totalPagar = cuotaMensual * meses;
+
+        // Mostramos los resultados
+        System.out.println("=== DETALLES DEL PRÉSTAMO ===");
+        System.out.println("Cantidad solicitada: " + cantidad + "€");
+        System.out.println("Tipo de préstamo: " + tipo);
+        System.out.println("Duración: " + meses + " meses");
+        System.out.println("Interés anual: " + interes + "%");
+        System.out.println("Cuota mensual: " + Math.round(cuotaMensual) + "€");
+        System.out.println("Total a pagar: " + Math.round(totalPagar) + "€");
+    }
+
+    public void ejercicio_18() {
+        // Los productos con su stock (nombre y cantidad)
+        String[] nombres = {"Celular", "Tablet", "Laptop", "Auriculares", "Monitor"};
+        int[] cantidades = {2, 8, 3, 4, 10};
+
+        // Para contar cuánto necesitamos en total
+        int totalReponer = 0;
+
+        // Mostramos el inventario actual
+        System.out.println("=== INVENTARIO ACTUAL ===");
+
+        // Revisamos producto por producto
+        for (int i = 0; i < nombres.length; i++) {
+            System.out.println(nombres[i] + ": " + cantidades[i] + " unidades");
+
+            // Si hay menos de 5, hay que reponer
+            if (cantidades[i] < 5) {
+                int faltantes = 5 - cantidades[i];
+                System.out.println("-> Reponer " + faltantes + " " + nombres[i]);
+                totalReponer += faltantes;
+            }
+        }
+
+        // Mostramos el total a reponer
+        System.out.println("\nTotal de unidades a reponer: " + totalReponer);
+    }
+
+    public void ejercicio_19() {
+        // Variables para contar
+        int diasCalor = 0;
+        int diasFrio = 0;
+        int sumaTemperaturas = 0;
+
+        // Simulamos 365 días
+        System.out.println("=== ANÁLISIS DEL CLIMA ===");
+
+        for (int dia = 1; dia <= 365; dia++) {
+            // Generamos temperatura aleatoria entre -5 y 40 grados
+            int temperatura = (int) (Math.random() * 46) - 5;
+
+            // Sumamos para el promedio
+            sumaTemperaturas += temperatura;
+
+            // Verificamos si es ola de calor o frío
+            if (temperatura > 35) {
+                diasCalor++;
+                System.out.println("Día " + dia + ": " + temperatura + "°C - ¡Ola de calor!");
+            } else if (temperatura < 0) {
+                diasFrio++;
+                System.out.println("Día " + dia + ": " + temperatura + "°C - ¡Ola de frío!");
+            }
+        }
+
+        // Calculamos el promedio
+        double temperaturaPromedio = (double) sumaTemperaturas / 365;
+
+        // Mostramos resultados
+        System.out.println("\nRESULTADOS DEL AÑO:");
+        System.out.println("Días con ola de calor: " + diasCalor);
+        System.out.println("Días con ola de frío: " + diasFrio);
+        System.out.println("Temperatura promedio: " + Math.round(temperaturaPromedio) + "°C");
+    }
+
+    public void ejercicio_20() {
+        // Contadores de clientes atendidos
+        int clientesCajero = 0;
+        int clientesAsesor = 0;
+
+        System.out.println("=== SIMULACIÓN DEL BANCO ===");
+
+        // Simulamos 120 minutos
+        for (int minuto = 1; minuto <= 120; minuto++) {
+            // Decidimos aleatoriamente qué servicio quiere el cliente (0 = cajero, 1 = asesor)
+            int servicio = (int) (Math.random() * 2);
+
+            if (servicio == 0) {
+                // Simulamos atención del cajero (2 minutos)
+                System.out.println("Minuto " + minuto + ": Llega cliente para CAJERO");
+                for (int i = 0; i < 2; i++) {
+                    minuto++;
+                    if (minuto > 120) {
+                        break;
+                    }
+                }
+                clientesCajero++;
+                System.out.println("Cliente atendido por CAJERO");
+            } else {
+                // Simulamos atención del asesor (5 minutos)
+                System.out.println("Minuto " + minuto + ": Llega cliente para ASESOR");
+                for (int i = 0; i < 5; i++) {
+                    minuto++;
+                    if (minuto > 120) {
+                        break;
+                    }
+                }
+                clientesAsesor++;
+                System.out.println("Cliente atendido por ASESOR");
+            }
+        }
+
+        // Mostramos resultados
+        System.out.println("\nRESULTADOS:");
+        System.out.println("Clientes atendidos por cajero: " + clientesCajero);
+        System.out.println("Clientes atendidos por asesor: " + clientesAsesor);
+        System.out.println("Total de clientes atendidos: " + (clientesCajero + clientesAsesor));
+    }
+
+    public void ejercicio_21() {
+        // Variables para el control
+        int horasRiego = 0;
+        int HORAS_DIA = 24;
+
+        System.out.println("=== CONTROL DE RIEGO DIARIO ===");
+
+        // Revisar cada 2 horas (12 revisiones al día)
+        for (int hora = 0; hora < HORAS_DIA; hora += 2) {
+            // Generamos humedad aleatoria (0-100%)
+            int humedad = (int) (Math.random() * 101);
+
+            System.out.println("\nHora " + hora + ":00 - Humedad: " + humedad + "%");
+
+            // Decidimos si regar según la humedad
+            if (humedad < 30) {
+                System.out.println("¡RIEGO ENCENDIDO! (Humedad baja)");
+                horasRiego += 2; // Sumamos 2 horas de riego
+            } else if (humedad <= 60) {
+                System.out.println("Humedad normal. Manteniendo estado.");
+            } else {
+                System.out.println("Humedad alta. Riego apagado.");
+            }
+        }
+
+        // Mostramos resumen
+        System.out.println("\n=== RESUMEN DEL DÍA ===");
+        System.out.println("Tiempo total de riego: " + horasRiego + " horas");
+        System.out.println("Agua estimada: " + (horasRiego * 100) + " litros");
+
+    }
+
 }
